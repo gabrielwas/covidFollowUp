@@ -1,24 +1,55 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from "react";
+import "./App.css";
+
+import { makeStyles } from "@material-ui/core/styles";
+
+import { StateContext, initialState, reducer } from "./stateCoronaFollow";
+
+import { getData } from "./client";
+
+import UpperBar from "./basicComponents/UpperBar";
+import Sidebar from "./Sidebar";
+import PageBase from "./PageBase";
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: "flex",
+  },
+  content: {
+    flexGrow: 1,
+    padding: theme.spacing(3),
+  },
+  toolbar: theme.mixins.toolbar,
+}));
 
 function App() {
+  const classes = useStyles();
+
+  const [state, dispatch] = React.useReducer(reducer, initialState);
+
+  useEffect(() => {
+    getData("Brazil").then((countryData) => {
+      dispatch({
+        type: "updateProperty",
+        property: "countryData",
+        info: countryData,
+      });
+    });
+  }, [state.countryData]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={classes.root}>
+      <StateContext.Provider value={{ state, dispatch }}>
+        <UpperBar name="Follow Music" />
+
+        <Sidebar />
+
+        <main className={classes.content}>
+          <div className={classes.toolbar} />
+
+          <PageBase step={state.activeStep} />
+        </main>
+      </StateContext.Provider>
     </div>
   );
 }
