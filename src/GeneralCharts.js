@@ -5,11 +5,6 @@ import { useStateValue } from "./stateCoronaFollow";
 import Container from "@material-ui/core/Container";
 import Paper from "@material-ui/core/Paper";
 
-import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
-import MenuItem from "@material-ui/core/MenuItem";
-import InputLabel from "@material-ui/core/InputLabel";
-
 import { getCountryData } from "./client";
 
 import List from "@material-ui/core/List";
@@ -100,23 +95,6 @@ const GeneralCharts = () => {
 
       <Grid item xs={10}>
         <Container maxWidth="lg">
-          <FormControl className={classes.formControl}>
-            <InputLabel id="demo-simple-select-label">Pais</InputLabel>
-            <Select
-              labelId="demo-simple-select-label"
-              id="demo-simple-select"
-              value={state.selectedCountry}
-              onChange={onChangeCountry}
-            >
-              {state.countries &&
-                state.countries.map((item) => (
-                  <MenuItem key={item.name} value={item.name}>
-                    {item.name}
-                  </MenuItem>
-                ))}
-            </Select>
-          </FormControl>
-
           <Paper className={classes.root} elevation={3}>
             <div style={{ height: 700, width: 1250 }}>
               {state.countryData && (

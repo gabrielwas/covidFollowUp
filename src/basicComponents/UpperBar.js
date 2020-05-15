@@ -6,7 +6,6 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
-import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles((theme) => ({
   appBar: {

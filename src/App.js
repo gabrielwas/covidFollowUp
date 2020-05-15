@@ -54,7 +54,7 @@ function App() {
   return (
     <div className={classes.root}>
       <StateContext.Provider value={{ state, dispatch }}>
-        <UpperBar name="Follow Music" />
+        <UpperBar name="Follow Corona" />
 
         <Sidebar />
 
