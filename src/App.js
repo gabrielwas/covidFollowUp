@@ -5,7 +5,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 import { StateContext, initialState, reducer } from "./stateCoronaFollow";
 
-import { getData } from "./client";
+import { getData, getCountries, getCountryData } from "./client";
 
 import UpperBar from "./basicComponents/UpperBar";
 import Sidebar from "./Sidebar";
@@ -28,14 +28,28 @@ function App() {
   const [state, dispatch] = React.useReducer(reducer, initialState);
 
   useEffect(() => {
-    getData("Brazil").then((countryData) => {
+    getData().then((allData) => {
+      dispatch({
+        type: "updateProperty",
+        property: "allData",
+        info: allData,
+      });
+
       dispatch({
         type: "updateProperty",
         property: "countryData",
-        info: countryData,
+        info: getCountryData("Brazil", allData),
       });
     });
-  }, [state.countryData]);
+
+    getCountries().then((countries) => {
+      dispatch({
+        type: "updateProperty",
+        property: "countries",
+        info: countries,
+      });
+    });
+  }, []);
 
   return (
     <div className={classes.root}>

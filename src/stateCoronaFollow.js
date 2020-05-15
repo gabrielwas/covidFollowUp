@@ -5,6 +5,9 @@ export const useStateValue = () => useContext(StateContext);
 
 export const initialState = {
   countryData: undefined,
+  allData: undefined,
+  countries: undefined,
+  selectedCountry: "Brazil",
   activeStep: 1,
 };
 
@@ -14,6 +17,12 @@ export const reducer = (state, action) => {
       return {
         ...state,
         [action.property]: action.info,
+      };
+
+    case "updateSelectedCountry":
+      return {
+        ...state,
+        selectedCountry: action.info,
       };
 
     default:

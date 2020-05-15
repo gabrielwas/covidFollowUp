@@ -20,11 +20,7 @@ const UpperBar = ({ name }) => {
   return (
     <>
       <CssBaseline />
-      <AppBar
-        position="fixed"
-        style={{ background: "#1F85A0" }}
-        className={classes.appBar}
-      >
+      <AppBar position="fixed" className={classes.appBar}>
         <Toolbar>
           <Grid
             justify="space-between" // Add it here :)
@@ -34,16 +30,6 @@ const UpperBar = ({ name }) => {
               <Typography variant="h6" noWrap>
                 {name}
               </Typography>
-            </Grid>
-
-            <Grid item>
-              <Button
-                variant="contained"
-                color="secondary"
-                href="https://us-central1-follow-music-spo.cloudfunctions.net/app/login"
-              >
-                Log Into Spotify
-              </Button>
             </Grid>
           </Grid>
         </Toolbar>
