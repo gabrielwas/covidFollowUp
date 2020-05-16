@@ -1,7 +1,9 @@
 import React from "react";
 import ListItemIns from "./basicComponents/ListItemIns";
 import SidebarIns from "./basicComponents/SidebarIns";
-import PlaylistPlayIcon from "@material-ui/icons/PlaylistPlay";
+
+import ShowChartIcon from '@material-ui/icons/ShowChart';
+import EqualizerIcon from '@material-ui/icons/Equalizer';
 
 const Sidebar = () => {
   return (
@@ -9,7 +11,13 @@ const Sidebar = () => {
       <ListItemIns
         name={"Gráfico Geral"}
         nextStep={1}
-        icon={<PlaylistPlayIcon />}
+        icon={<ShowChartIcon />}
+      />
+
+    <ListItemIns
+        name={"Mortes"}
+        nextStep={2}
+        icon={<EqualizerIcon />}
       />
     </SidebarIns>
   );
