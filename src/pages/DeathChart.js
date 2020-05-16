@@ -1,13 +1,12 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
-import { useStateValue } from "./stateCoronaFollow";
+import { useStateValue } from "../stateClient/stateCoronaFollow";
 import Paper from "@material-ui/core/Paper";
-import MyResponsiveLine from "./chartComponents/MyResponsiveLine";
-import ListCountries from "./components/ListCountries";
-import MyResponsiveBar from './chartComponents/MyResponsiveBar';
+import ListCountries from "../components/ListCountries";
+import MyResponsiveBar from '../chartComponents/MyResponsiveBar';
 
-import {getDeaths} from "./client"
+import {getDeaths} from "../stateClient/client"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -16,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const GeneralCharts = () => {
+const DeathChart = () => {
   const { state } = useStateValue();
   const classes = useStyles();
 
@@ -35,7 +34,7 @@ const GeneralCharts = () => {
       <Grid item xs={10}>
         <div style={{ height: "85vh", width: "70vw", display: "flex" }}>
           <Paper className={classes.root} elevation={3}>
-            {state.countryData && <MyResponsiveLine data={state.countryData} />}
+            {state.countryData && <MyResponsiveBar data={getDeaths(state.countryData)} />}
           </Paper>
         </div>
       </Grid>
@@ -43,4 +42,4 @@ const GeneralCharts = () => {
   );
 };
 
-export default GeneralCharts;
+export default DeathChart;

@@ -1,6 +1,6 @@
 import React from "react";
-import ListItemIns from "./basicComponents/ListItemIns";
-import SidebarIns from "./basicComponents/SidebarIns";
+import ListItemIns from "../basicComponents/ListItemIns";
+import SidebarIns from "../basicComponents/SidebarIns";
 
 import ShowChartIcon from '@material-ui/icons/ShowChart';
 import EqualizerIcon from '@material-ui/icons/Equalizer';

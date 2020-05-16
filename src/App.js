@@ -3,13 +3,13 @@ import "./App.css";
 
 import { makeStyles } from "@material-ui/core/styles";
 
-import { StateContext, initialState, reducer } from "./stateCoronaFollow";
+import { StateContext, initialState, reducer } from "./stateClient/stateCoronaFollow";
 
-import { getData, getCountries, getCountryData } from "./client";
+import { getData, getCountries, getCountryData } from "./stateClient/client";
 
 import UpperBar from "./basicComponents/UpperBar";
-import Sidebar from "./Sidebar";
-import PageBase from "./PageBase";
+import Sidebar from "./components/Sidebar";
+import PageBase from "./components/PageBase";
 
 const useStyles = makeStyles((theme) => ({
   root: {

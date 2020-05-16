@@ -1,14 +1,14 @@
 import React from "react";
-import GeneralCharts from "./GeneralCharts";
-import DeathChart from './DeathChart';
+import GeneralCharts from "../pages/GeneralCharts";
+import DeathChart from "../pages/DeathChart";
 
 const PageStep = ({ step }) => {
   switch (step) {
     case 1:
       return <GeneralCharts />;
 
-      case 2:
-        return <DeathChart />;
+    case 2:
+      return <DeathChart />;
 
     default:
       break;

@@ -1,5 +1,5 @@
 import React from "react";
-import { useStateValue } from "../stateCoronaFollow";
+import { useStateValue } from "../stateClient/stateCoronaFollow";
 
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
