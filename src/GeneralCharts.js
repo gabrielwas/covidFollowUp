@@ -22,11 +22,11 @@ const useStyles = makeStyles((theme) => ({
     height: "100%",
   },
   listConfig: {
-    width: "100%",
     backgroundColor: theme.palette.background.paper,
     position: "relative",
     overflow: "auto",
-    maxHeight: 800,
+    maxHeight: "85vh",
+    minWidth: "25vh"
   },
   formControl: {
     margin: theme.spacing(1),
@@ -58,9 +58,9 @@ const GeneralCharts = () => {
   return (
     <Grid
       container
-      spacing={1}
+      spacing={2}
       alignItems="flex-start"
-      style={{ minHeight: "100vh" }}
+      style={{}}
       justify="center"
     >
       <Grid item xs={2}>
@@ -94,15 +94,11 @@ const GeneralCharts = () => {
       </Grid>
 
       <Grid item xs={10}>
-        <Container maxWidth="lg">
+        <div style={{ height: "85vh", width: "70vw", display: "flex" }}>
           <Paper className={classes.root} elevation={3}>
-            <div style={{ height: 700, width: 1250 }}>
-              {state.countryData && (
-                <MyResponsiveLine data={state.countryData} />
-              )}
-            </div>
+            {state.countryData && <MyResponsiveLine data={state.countryData} />}
           </Paper>
-        </Container>
+        </div>
       </Grid>
     </Grid>
   );

@@ -5,11 +5,7 @@ import GeneralCharts from "./GeneralCharts";
 const PageStep = ({ step }) => {
   switch (step) {
     case 1:
-      return (
-        <Grid item xs={11}>
-          <GeneralCharts />
-        </Grid>
-      );
+      return <GeneralCharts />;
 
     default:
       break;
@@ -17,17 +13,7 @@ const PageStep = ({ step }) => {
 };
 
 const PageBase = ({ step }) => {
-  return (
-    <Grid
-      container
-      spacing={4}
-      alignItems="flex-start"
-      style={{ minHeight: "100vh" }}
-      justify="center"
-    >
-      <PageStep step={step} />
-    </Grid>
-  );
+  return <PageStep step={step} />;
 };
 
 export default PageBase;
