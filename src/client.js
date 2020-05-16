@@ -88,5 +88,31 @@ export const getCountryData = (countryName, data) => {
     }
   });
 
+  console.log(getDeaths(result));
+
   return result;
+};
+
+export const getDeaths = (countryData) => {
+  const objDeaths = {
+    deaths: "Mortes",
+  };
+
+  countryData
+    .find(({ id }) => id === "Mortes")
+    .data.forEach((dia) => {
+      let startDate = new Date();
+
+      startDate.setDate(startDate.getDate() - 6);
+
+      if (new Date(dia.x) > startDate) {
+        objDeaths[dia.x] = dia.y;
+      }
+    });
+
+  const deathData = [];
+
+  deathData.push(objDeaths);
+
+  return deathData;
 };
