@@ -36,19 +36,19 @@ export const getCountries = () => {
 export const getCountryData = (countryName, data) => {
   const result = [
     {
-      id: "confirmed",
+      id: "Mortes",
       data: [],
     },
     {
-      id: "recovered",
+      id: "Recuperados",
       data: [],
     },
     {
-      id: "deaths",
+      id: "Casos Ativos",
       data: [],
     },
     {
-      id: "activeCases",
+      id: "Confirmados",
       data: [],
     },
   ];
@@ -59,28 +59,28 @@ export const getCountryData = (countryName, data) => {
 
     if (parsedDate > fixedDate) {
       result
-        .find(({ id }) => id === "confirmed")
+        .find(({ id }) => id === "Confirmados")
         .data.push({
           x: date,
           y: confirmed,
         });
 
       result
-        .find(({ id }) => id === "recovered")
+        .find(({ id }) => id === "Recuperados")
         .data.push({
           x: date,
           y: recovered,
         });
 
       result
-        .find(({ id }) => id === "deaths")
+        .find(({ id }) => id === "Mortes")
         .data.push({
           x: date,
           y: deaths,
         });
 
       result
-        .find(({ id }) => id === "activeCases")
+        .find(({ id }) => id === "Casos Ativos")
         .data.push({
           x: date,
           y: confirmed - recovered,

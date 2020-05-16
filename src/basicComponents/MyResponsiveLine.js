@@ -50,7 +50,7 @@ const MyResponsiveLine = ({ data }) => (
           anchor: "top",
           direction: "row",
           justify: false,
-          translateX: 300,
+          translateX: -400,
           translateY: -36,
           itemsSpacing: 0,
           itemDirection: "left-to-right",
