@@ -16,7 +16,6 @@ const useStyles = makeStyles((theme) => ({
     position: "relative",
     overflow: "auto",
     maxHeight: "85vh",
-    minWidth: "25vh",
   },
 }));
 

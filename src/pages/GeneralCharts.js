@@ -6,6 +6,8 @@ import Paper from "@material-ui/core/Paper";
 import MyResponsiveLine from "../chartComponents/MyResponsiveLine";
 import ListCountries from "../components/ListCountries";
 
+import Box from "@material-ui/core/Box";
+
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
@@ -22,20 +24,31 @@ const GeneralCharts = () => {
       container
       spacing={2}
       alignItems="flex-start"
-      style={{}}
+      style={{ }}
       justify="center"
     >
-      <Grid item xs={2}>
-        <ListCountries />
+
+<Grid item sm={12} md={2}>
+        <Box p={2}>
+          <ListCountries />
+        </Box>
       </Grid>
 
-      <Grid item xs={10}>
-        <div style={{ height: "85vh", width: "70vw", display: "flex" }}>
-          <Paper className={classes.root} elevation={3}>
-            {state.countryData && <MyResponsiveLine data={state.countryData} />}
-          </Paper>
-        </div>
+<Grid item sm={12} md={10}>
+        <Box p={2}>
+          <div style={{ height: "85vh", width: "65vw" }}>
+            <Paper className={classes.root} elevation={3}>
+              {state.countryData && (
+                <MyResponsiveLine data={state.countryData} />
+              )}
+            </Paper>
+          </div>
+        </Box>
       </Grid>
+
+      
+
+      
     </Grid>
   );
 };
