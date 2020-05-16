@@ -88,31 +88,51 @@ export const getCountryData = (countryName, data) => {
     }
   });
 
-  console.log(getDeaths(result));
-
   return result;
 };
 
+var days = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sab"];
+var months = [
+  "Jan",
+  "Fev",
+  "Mar",
+  "Abr",
+  "Mai",
+  "Jun",
+  "Jul",
+  "Ago",
+  "Set",
+  "Out",
+  "Nov",
+  "Dez",
+];
+
 export const getDeaths = (countryData) => {
-  const objDeaths = {
-    deaths: "Mortes",
-  };
+  const deathData = [];
+
+  let prevDay;
 
   countryData
     .find(({ id }) => id === "Mortes")
-    .data.forEach((dia) => {
+    .data.forEach((day) => {
       let startDate = new Date();
 
-      startDate.setDate(startDate.getDate() - 6);
+      startDate.setDate(startDate.getDate() - 15);
 
-      if (new Date(dia.x) > startDate) {
-        objDeaths[dia.x] = dia.y;
+      const iDate = new Date(day.x);
+      if (iDate > startDate) {
+        const dayWeek = days[iDate.getDay()];
+        const dayOfMonth = iDate.getDate();
+        const month = months[iDate.getMonth()];
+
+        deathData.push({
+          date: `${dayWeek} ${dayOfMonth} ${month}`,
+          deaths: day.y - prevDay.y,
+        });
       }
+
+      prevDay = day;
     });
-
-  const deathData = [];
-
-  deathData.push(objDeaths);
 
   return deathData;
 };

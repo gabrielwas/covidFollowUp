@@ -2,28 +2,14 @@ import React from "react";
 import { ResponsiveBar } from "@nivo/bar";
 
 const MyResponsiveBar = ({ data }) => {
-    
-  const getDeaths = (arrayDeaths) => {
-    const arrayKeys = [];
-
-    for (let [key, value] of Object.entries(arrayDeaths[0])) {
-      console.log(key);
-      if (key !== "deaths") {
-        arrayKeys.push(key);
-      }
-    }
-
-    return arrayKeys;
-  };
-
   return (
     <ResponsiveBar
       data={data}
-      keys={getDeaths(data)}
-      indexBy="deaths"
+      keys={["deaths"]}
+      indexBy="date"
       margin={{ top: 50, right: 130, bottom: 50, left: 60 }}
       padding={0.3}
-      colors={{ scheme: "nivo" }}
+      colors={{ scheme: "set1" }}
       defs={[
         {
           id: "dots",
@@ -65,7 +51,7 @@ const MyResponsiveBar = ({ data }) => {
         tickSize: 5,
         tickPadding: 5,
         tickRotation: 0,
-        legend: "country",
+        legend: "Dia",
         legendPosition: "middle",
         legendOffset: 32,
       }}
@@ -73,37 +59,14 @@ const MyResponsiveBar = ({ data }) => {
         tickSize: 5,
         tickPadding: 5,
         tickRotation: 0,
-        legend: "food",
+        legend: "Quantidade",
         legendPosition: "middle",
-        legendOffset: -40,
+        legendOffset: -50,
       }}
       labelSkipWidth={12}
       labelSkipHeight={12}
       labelTextColor={{ from: "color", modifiers: [["darker", 1.6]] }}
-      legends={[
-        {
-          dataFrom: "keys",
-          anchor: "bottom-right",
-          direction: "column",
-          justify: false,
-          translateX: 120,
-          translateY: 0,
-          itemsSpacing: 2,
-          itemWidth: 100,
-          itemHeight: 20,
-          itemDirection: "left-to-right",
-          itemOpacity: 0.85,
-          symbolSize: 20,
-          effects: [
-            {
-              on: "hover",
-              style: {
-                itemOpacity: 1,
-              },
-            },
-          ],
-        },
-      ]}
+      legends={[]}
       animate={true}
       motionStiffness={90}
       motionDamping={15}
