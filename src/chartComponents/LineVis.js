@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import "../../node_modules/react-vis/dist/style.css";
 
@@ -10,6 +10,7 @@ import {
   FlexibleXYPlot,
   LineMarkSeries,
   DiscreteColorLegend,
+  Crosshair,
 } from "react-vis";
 
 const ITEMS = [
@@ -20,6 +21,38 @@ const ITEMS = [
 ];
 
 const LineVis = ({ data }) => {
+  const [crosshairValues, setCrosshairValues] = useState([]);
+
+  // const titleFormating = (d) => {
+  //   console.log(d);
+
+  //   const result = {
+  //     title: "Date",
+  //     value: d[0].y,
+  //   };
+
+  //   return result;
+  // };
+
+  const titleFormating = (d) => [
+    {
+      title: "Confirmados",
+      value: d[3].y,
+    },
+    {
+      title: "Casos Ativos",
+      value: d[2].y,
+    },
+    {
+      title: "Recuperados",
+      value: d[1].y,
+    },
+    {
+      title: "Mortes",
+      value: d[0].y,
+    },
+  ];
+
   return (
     <FlexibleXYPlot xType="time" margin={{ right: 65, left: 10 }}>
       <HorizontalGridLines />
@@ -36,6 +69,9 @@ const LineVis = ({ data }) => {
         curve={"curveMonotoneX"}
         data={data[3].data}
         color="#3498DB"
+        onNearestX={(value, { index }) =>
+          setCrosshairValues(data.map((d) => d.data[index]))
+        }
       />
 
       <LineMarkSeries
@@ -58,6 +94,7 @@ const LineVis = ({ data }) => {
         data={data[0].data}
         color="#E74C3C"
       />
+      <Crosshair values={crosshairValues} itemsFormat={titleFormating} />
     </FlexibleXYPlot>
   );
 };
