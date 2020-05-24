@@ -4,10 +4,9 @@ import Grid from "@material-ui/core/Grid";
 import { useStateValue } from "../stateClient/stateCoronaFollow";
 import Paper from "@material-ui/core/Paper";
 import ListCountries from "../components/ListCountries";
-import MyResponsiveBar from "../chartComponents/MyResponsiveBar";
 
 import { getDeaths } from "../stateClient/client";
-import BarVis from '../chartComponents/BarVis';
+import BarVis from "../chartComponents/BarVis";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -31,10 +30,6 @@ const DeathChart = () => {
       <Grid item xs={10}>
         <div style={{ height: "85vh", width: "80vw", display: "flex" }}>
           <Paper className={classes.root} elevation={3}>
-            {/* {state.countryData && (
-              <MyResponsiveBar data={getDeaths(state.countryData)} />
-            )} */}
-
             {state.countryData && (
               <BarVis data={getDeaths(state.countryData)} />
             )}
