@@ -7,6 +7,8 @@ import MyResponsiveLine from "../chartComponents/MyResponsiveLine";
 import ListCountries from "../components/ListCountries";
 import Chip from "@material-ui/core/Chip";
 
+import LineVis from "../components/LineVis"
+
 import Box from "@material-ui/core/Box";
 
 const useStyles = makeStyles((theme) => ({
@@ -35,9 +37,11 @@ const GeneralCharts = () => {
             <Box p={1}>
               <div style={{ height: "85vh", width: "80vw" }}>
                 <Paper className={classes.root} elevation={3}>
-                  {state.countryData && (
+
+<LineVis/>
+                  {/* {state.countryData && (
                     <MyResponsiveLine data={state.countryData} />
-                  )}
+                  )} */}
                 </Paper>
               </div>
             </Box>
