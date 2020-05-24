@@ -4,9 +4,14 @@ import Grid from "@material-ui/core/Grid";
 import { useStateValue } from "../stateClient/stateCoronaFollow";
 import Paper from "@material-ui/core/Paper";
 import ListCountries from "../components/ListCountries";
+import Chip from "@material-ui/core/Chip";
 
 import { getDeaths } from "../stateClient/client";
 import BarVis from "../chartComponents/BarVis";
+
+import Box from "@material-ui/core/Box";
+import SliderDates from "../components/SliderDates";
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -20,25 +25,35 @@ const DeathChart = () => {
   const classes = useStyles();
 
   return (
-    <Grid
-      container
-      spacing={2}
-      alignItems="flex-start"
-      style={{}}
-      justify="center"
-    >
-      <Grid item xs={10}>
-        <div style={{ height: "85vh", width: "80vw", display: "flex" }}>
-          <Paper className={classes.root} elevation={3}>
-            {state.countryData && (
-              <BarVis data={getDeaths(state.countryData)} />
-            )}
-          </Paper>
-        </div>
+    <Grid container spacing={2} alignItems="center" justify="center" style={{}}>
+      <Grid item sm={12} md={10}>
+        <Grid container spacing={0} className={classes.root}>
+          <Grid item sm={12} md={6}>
+            <Chip label={state.selectedCountry} />
+          </Grid>
+
+          <Grid item sm={12} md={6}>
+            {state.daysRange && <SliderDates />}
+          </Grid>
+
+          <Grid item sm={12} md={12}>
+            <Box p={1}>
+              <div style={{ height: "80vh", width: "80vw" }}>
+                <Paper className={classes.root} elevation={3}>
+                  {state.countryData && (
+                    <BarVis data={getDeaths(state.countryData)} />
+                  )}
+                </Paper>
+              </div>
+            </Box>
+          </Grid>
+        </Grid>
       </Grid>
 
-      <Grid item xs={2}>
-        <ListCountries />
+      <Grid item sm={12} md={2}>
+        <Box>
+          <ListCountries />
+        </Box>
       </Grid>
     </Grid>
   );
