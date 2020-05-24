@@ -33,7 +33,11 @@ export const getCountries = () => {
     });
 };
 
-export const getCountryData = (countryName, data) => {
+export const getCountryData = (
+  countryName,
+  data,
+rangeDays,
+) => {
   const result = [
     {
       id: "Mortes",
@@ -53,11 +57,16 @@ export const getCountryData = (countryName, data) => {
     },
   ];
 
+  let startDate = new Date("2020-03-03");
+  let endDate = new Date("2020-03-03");
+
+  startDate.setDate(startDate.getDate() + rangeDays[0]);
+  endDate.setDate(endDate.getDate() + rangeDays[1]);
+
   data[countryName].forEach(({ date, confirmed, recovered, deaths }) => {
-    let fixedDate = new Date("2020-03-03");
     let parsedDate = new Date(date);
 
-    if (parsedDate > fixedDate) {
+    if (parsedDate > startDate && parsedDate < endDate) {
       result
         .find(({ id }) => id === "Confirmados")
         .data.push({

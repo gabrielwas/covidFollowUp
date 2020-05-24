@@ -8,6 +8,7 @@ export const initialState = {
   allData: undefined,
   countries: undefined,
   selectedCountry: "Brazil",
+  daysRange: undefined,
   activeStep: 1,
 };
 

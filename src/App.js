@@ -31,6 +31,19 @@ function App() {
   const [state, dispatch] = React.useReducer(reducer, initialState);
 
   useEffect(() => {
+    let currentDate = new Date();
+    let firstDate = new Date("2020-03-03");
+
+    const daysBetween = Math.floor(
+      (currentDate.getTime() - firstDate.getTime()) / (1000 * 3600 * 24)
+    );
+
+    dispatch({
+      type: "updateProperty",
+      property: "daysRange",
+      info: [0, daysBetween],
+    });
+
     getData().then((allData) => {
       dispatch({
         type: "updateProperty",
@@ -41,7 +54,7 @@ function App() {
       dispatch({
         type: "updateProperty",
         property: "countryData",
-        info: getCountryData("Brazil", allData),
+        info: getCountryData("Brazil", allData, [0, daysBetween]),
       });
     });
 
