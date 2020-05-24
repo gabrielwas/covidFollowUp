@@ -28,16 +28,17 @@ const GeneralCharts = () => {
   return (
     <Grid container spacing={2} alignItems="center" justify="center" style={{}}>
       <Grid item sm={12} md={10}>
-        <Grid container spacing={0} className={classes.root}>
-          <Grid item sm={12} md={6}>
+
+        <Grid container spacing={0} >
+          <Grid item sm={12} md={6} xs={12}>
             <Chip label={state.selectedCountry} />
           </Grid>
 
-          <Grid item sm={12} md={6}>
+          <Grid item sm={12} md={6} xs={12}>
             {state.daysRange && <SliderDates/>}
           </Grid>
 
-          <Grid item sm={12} md={12}>
+          <Grid item sm={12} md={12} xs={12}>
             <Box p={1}>
               <div style={{ height: "80vh", width: "80vw" }}>
                 <Paper className={classes.root} elevation={3}>

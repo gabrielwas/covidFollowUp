@@ -23,7 +23,8 @@ const UpperBar = ({ name }) => {
       <AppBar position="fixed" className={classes.appBar}>
         <Toolbar>
           <Grid
-            justify="space-between" // Add it here :)
+            justify="space-between"
+            alignItems="center"
             container
           >
              <Grid item>
