@@ -34,11 +34,11 @@ const LineVis = ({ data }) => {
       <LineMarkSeries
         className="linemark-series-example-2"
         curve={"curveMonotoneX"}
-        data={[{x: 1, y: 10}, {x: 2, y: 4}, {x: 3, y: 2}, {x: 4, y: 15}]}
+        data={data[3].data}
         color="#3498DB"
       />
 
-      {/* <LineMarkSeries
+      <LineMarkSeries
         className="linemark-series-example-2"
         curve={"curveMonotoneX"}
         data={data[2].data}
@@ -57,7 +57,7 @@ const LineVis = ({ data }) => {
         curve={"curveMonotoneX"}
         data={data[0].data}
         color="#E74C3C"
-      /> */}
+      />
     </FlexibleXYPlot>
   );
 };
