@@ -37,11 +37,9 @@ const GeneralCharts = () => {
             <Box p={1}>
               <div style={{ height: "85vh", width: "80vw" }}>
                 <Paper className={classes.root} elevation={3}>
-
-<LineVis/>
-                  {/* {state.countryData && (
-                    <MyResponsiveLine data={state.countryData} />
-                  )} */}
+                  {state.countryData && (
+                    <LineVis data={state.countryData} />
+                  )}
                 </Paper>
               </div>
             </Box>

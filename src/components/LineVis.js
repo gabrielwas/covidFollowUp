@@ -1,83 +1,54 @@
-import React, { Component } from "react";
-import { curveCatmullRom } from "d3-shape";
+import React from "react";
 
 import "../../node_modules/react-vis/dist/style.css";
 
 import {
-  XYPlot,
   XAxis,
   YAxis,
-  ChartLabel,
   HorizontalGridLines,
   VerticalGridLines,
-  LineSeries,
   FlexibleXYPlot,
+  LineMarkSeries,
+  DiscreteColorLegend,
 } from "react-vis";
 
-const LineVis = () => {
-  return (
-    <FlexibleXYPlot>
+const ITEMS = ["Confirmados", "Casos Ativos", "Recuperados", "Mortes"];
 
+const LineVis = ({ data }) => {
+  return (
+    <FlexibleXYPlot xType="time">
       <HorizontalGridLines />
       <VerticalGridLines />
       <XAxis />
       <YAxis />
-      <ChartLabel
-        text="X Axis"
-        className="alt-x-label"
-        includeMargin={false}
-        xPercent={0.025}
-        yPercent={1.01}
+      <DiscreteColorLegend
+        style={{ position: "absolute", left: "5%", top: "5%" }}
+        items={ITEMS}
       />
 
-      <ChartLabel
-        text="Y Axis"
-        className="alt-y-label"
-        includeMargin={false}
-        xPercent={0.06}
-        yPercent={0.06}
-        style={{
-          transform: "rotate(-90)",
-          textAnchor: "end",
-        }}
-      />
-
-      <LineSeries
-        className="first-series"
-        data={[
-          { x: 1, y: 3 },
-          { x: 2, y: 5 },
-          { x: 3, y: 15 },
-          { x: 4, y: 12 },
-        ]}
-      />
-      <LineSeries className="second-series" data={null} />
-      <LineSeries
-        className="third-series"
+      <LineMarkSeries
+        className="linemark-series-example-2"
         curve={"curveMonotoneX"}
-        data={[
-          { x: 1, y: 10 },
-          { x: 2, y: 4 },
-          { x: 3, y: 2 },
-          { x: 4, y: 15 },
-        ]}
-        strokeDasharray={"7, 3"}
+        data={data[3].data}
       />
-      <LineSeries
-        className="fourth-series"
-        curve={curveCatmullRom.alpha(0.5)}
-        style={{
-          // note that this can not be translated to the canvas version
-          strokeDasharray: "2 2",
-        }}
-        data={[
-          { x: 1, y: 7 },
-          { x: 2, y: 11 },
-          { x: 3, y: 9 },
-          { x: 4, y: 2 },
-        ]}
+
+      <LineMarkSeries
+        className="linemark-series-example-2"
+        curve={"curveMonotoneX"}
+        data={data[2].data}
       />
- 
+
+      <LineMarkSeries
+        className="linemark-series-example-2"
+        curve={"curveMonotoneX"}
+        data={data[1].data}
+      />
+
+      <LineMarkSeries
+        className="linemark-series-example-2"
+        curve={"curveMonotoneX"}
+        data={data[0].data}
+      />
     </FlexibleXYPlot>
   );
 };

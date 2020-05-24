@@ -2,10 +2,11 @@ import React from "react";
 import Menu from "@material-ui/core/Menu";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
-import ListItemIns from '../basicComponents/ListItemIns';
+import ListItemIns from "../basicComponents/ListItemIns";
+import List from "@material-ui/core/List";
 
-import ShowChartIcon from '@material-ui/icons/ShowChart';
-import EqualizerIcon from '@material-ui/icons/Equalizer';
+import ShowChartIcon from "@material-ui/icons/ShowChart";
+import EqualizerIcon from "@material-ui/icons/Equalizer";
 
 export default function SimpleMenu() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -37,13 +38,15 @@ export default function SimpleMenu() {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        <ListItemIns
-          name={"Gráfico Geral"}
-          nextStep={1}
-          icon={<ShowChartIcon />}
-        />
+        <List>
+          <ListItemIns
+            name={"Gráfico Geral"}
+            nextStep={1}
+            icon={<ShowChartIcon />}
+          />
 
-        <ListItemIns name={"Mortes"} nextStep={2} icon={<EqualizerIcon />} />
+          <ListItemIns name={"Mortes"} nextStep={2} icon={<EqualizerIcon />} />
+        </List>
       </Menu>
     </>
   );

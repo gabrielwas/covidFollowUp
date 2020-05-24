@@ -61,28 +61,28 @@ export const getCountryData = (countryName, data) => {
       result
         .find(({ id }) => id === "Confirmados")
         .data.push({
-          x: date,
+          x: parsedDate,
           y: confirmed,
         });
 
       result
         .find(({ id }) => id === "Recuperados")
         .data.push({
-          x: date,
+          x: parsedDate,
           y: recovered,
         });
 
       result
         .find(({ id }) => id === "Mortes")
         .data.push({
-          x: date,
+          x: parsedDate,
           y: deaths,
         });
 
       result
         .find(({ id }) => id === "Casos Ativos")
         .data.push({
-          x: date,
+          x: parsedDate,
           y: confirmed - recovered,
         });
     }
