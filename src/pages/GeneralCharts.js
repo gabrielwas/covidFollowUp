@@ -25,12 +25,6 @@ const GeneralCharts = () => {
 
   return (
     <Grid container spacing={2} alignItems="center" justify="center" style={{}}>
-      <Grid item sm={12} md={2}>
-        <Box>
-          <ListCountries />
-        </Box>
-      </Grid>
-
       <Grid item sm={12} md={10}>
         <Grid container spacing={0} className={classes.root}>
           <Grid item sm={12} md={12}>
@@ -39,7 +33,7 @@ const GeneralCharts = () => {
 
           <Grid item sm={12} md={12}>
             <Box p={1}>
-              <div style={{ height: "85vh", width: "65vw" }}>
+              <div style={{ height: "85vh", width: "80vw" }}>
                 <Paper className={classes.root} elevation={3}>
                   {state.countryData && (
                     <MyResponsiveLine data={state.countryData} />
@@ -49,6 +43,12 @@ const GeneralCharts = () => {
             </Box>
           </Grid>
         </Grid>
+      </Grid>
+
+      <Grid item sm={12} md={2}>
+        <Box>
+          <ListCountries />
+        </Box>
       </Grid>
     </Grid>
   );

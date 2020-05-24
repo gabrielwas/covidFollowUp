@@ -3,12 +3,15 @@ import "./App.css";
 
 import { makeStyles } from "@material-ui/core/styles";
 
-import { StateContext, initialState, reducer } from "./stateClient/stateCoronaFollow";
+import {
+  StateContext,
+  initialState,
+  reducer,
+} from "./stateClient/stateCoronaFollow";
 
 import { getData, getCountries, getCountryData } from "./stateClient/client";
 
 import UpperBar from "./basicComponents/UpperBar";
-import Sidebar from "./components/Sidebar";
 import PageBase from "./components/PageBase";
 
 const useStyles = makeStyles((theme) => ({
@@ -55,8 +58,6 @@ function App() {
     <div className={classes.root}>
       <StateContext.Provider value={{ state, dispatch }}>
         <UpperBar name="Covid Follow-up" />
-
-        <Sidebar />
 
         <main className={classes.content}>
           <div className={classes.toolbar} />

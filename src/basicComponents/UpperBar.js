@@ -6,6 +6,7 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
+import SimpleMenu from "../components/SimpleMenu";
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -25,11 +26,16 @@ const UpperBar = ({ name }) => {
             justify="space-between" // Add it here :)
             container
           >
+             <Grid item>
+              <SimpleMenu />
+            </Grid>
             <Grid item>
               <Typography variant="h6" noWrap>
                 {name}
               </Typography>
             </Grid>
+
+           
           </Grid>
         </Toolbar>
       </AppBar>
