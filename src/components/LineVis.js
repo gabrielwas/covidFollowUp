@@ -13,7 +13,13 @@ import {
   DiscreteColorLegend,
 } from "react-vis";
 
-const ITEMS = ["Confirmados", "Casos Ativos", "Recuperados", "Mortes"];
+
+const ITEMS = [
+  {title: 'Confirmados', color: '#3498DB', strokeWidth: 12},
+  {title: 'Casos Ativos', color: '#F1C40F', strokeWidth: 12},
+  {title: 'Recuperados', color: '#16A085', strokeWidth: 12},
+  {title: 'Mortes', color: '#E74C3C', strokeWidth: 12}
+]
 
 const LineVis = ({ data }) => {
   return (
