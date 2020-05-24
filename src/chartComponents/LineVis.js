@@ -1,7 +1,6 @@
 import React from "react";
 
 import "../../node_modules/react-vis/dist/style.css";
-import Grid from "@material-ui/core/Grid";
 
 import {
   XAxis,
@@ -13,17 +12,16 @@ import {
   DiscreteColorLegend,
 } from "react-vis";
 
-
 const ITEMS = [
-  {title: 'Confirmados', color: '#3498DB', strokeWidth: 12},
-  {title: 'Casos Ativos', color: '#F1C40F', strokeWidth: 12},
-  {title: 'Recuperados', color: '#16A085', strokeWidth: 12},
-  {title: 'Mortes', color: '#E74C3C', strokeWidth: 12}
-]
+  { title: "Confirmados", color: "#3498DB", strokeWidth: 12 },
+  { title: "Casos Ativos", color: "#F1C40F", strokeWidth: 12 },
+  { title: "Recuperados", color: "#16A085", strokeWidth: 12 },
+  { title: "Mortes", color: "#E74C3C", strokeWidth: 12 },
+];
 
 const LineVis = ({ data }) => {
   return (
-    <FlexibleXYPlot xType="time" margin={{ right: 65, left: 10}}>
+    <FlexibleXYPlot xType="time" margin={{ right: 65, left: 10 }}>
       <HorizontalGridLines />
       <VerticalGridLines />
       <XAxis />

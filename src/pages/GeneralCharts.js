@@ -3,11 +3,10 @@ import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import { useStateValue } from "../stateClient/stateCoronaFollow";
 import Paper from "@material-ui/core/Paper";
-import MyResponsiveLine from "../chartComponents/MyResponsiveLine";
 import ListCountries from "../components/ListCountries";
 import Chip from "@material-ui/core/Chip";
 
-import LineVis from "../components/LineVis";
+import LineVis from "../chartComponents/LineVis";
 
 import Box from "@material-ui/core/Box";
 
