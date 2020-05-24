@@ -40,8 +40,8 @@ const DeathChart = () => {
             <Box p={1}>
               <div style={{ height: "80vh", width: "80vw" }}>
                 <Paper className={classes.root} elevation={3}>
-                  {state.countryData && (
-                    <BarVis data={getDeaths(state.countryData)} />
+                  {state.countryData && state.daysRange && (
+                    <BarVis data={getDeaths(state.countryData, state.daysRange)} />
                   )}
                 </Paper>
               </div>

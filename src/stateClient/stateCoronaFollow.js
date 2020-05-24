@@ -9,7 +9,7 @@ export const initialState = {
   countries: undefined,
   selectedCountry: "Brazil",
   daysRange: undefined,
-  activeStep: 1,
+  activeStep: 2,
 };
 
 export const reducer = (state, action) => {

@@ -15,10 +15,10 @@ import {
 const BarVis = ({ data }) => {
 
   return (
-    <FlexibleXYPlot xType="ordinal"  margin={{ right: 65, left: 10 }}>
+    <FlexibleXYPlot xType="ordinal"  margin={{ right: 65, left: 10, bottom: 80 }}>
       <HorizontalGridLines />
       <VerticalGridLines />
-      <XAxis />
+      <XAxis tickLabelAngle={-90}/>
       <YAxis orientation="right" />
 
       <VerticalBarSeries className="vertical-bar-series-example" data={data} color="#CB4335"/>

@@ -33,11 +33,7 @@ export const getCountries = () => {
     });
 };
 
-export const getCountryData = (
-  countryName,
-  data,
-rangeDays,
-) => {
+export const getCountryData = (countryName, data, rangeDays) => {
   const result = [
     {
       id: "Mortes",
@@ -116,31 +112,37 @@ var months = [
   "Dez",
 ];
 
-export const getDeaths = (countryData) => {
+export const getDeaths = (countryData, rangeDays) => {
   const deathData = [];
 
-  let prevDay;
+  let prevDay = {
+    y: 0,
+  };
+
+  let startDate = new Date("2020-03-03");
+  let endDate = new Date("2020-03-03");
+
+  startDate.setDate(startDate.getDate() + rangeDays[0] + 1);
+  endDate.setDate(endDate.getDate() + rangeDays[1]);
 
   countryData
     .find(({ id }) => id === "Mortes")
-    .data.forEach((day) => {
-      let startDate = new Date();
+    .data.forEach((day, index, arr) => {
+      if (index > 0) {
+        prevDay = arr[index - 1];
+      }
 
-      startDate.setDate(startDate.getDate() - 15);
-
-      const iDate = new Date(day.x);
-      if (iDate > startDate) {
-        const dayWeek = days[iDate.getDay()];
-        const dayOfMonth = iDate.getDate();
-        const month = months[iDate.getMonth()];
+      const parsedDate = new Date(day.x);
+      if (parsedDate > startDate && parsedDate < endDate) {
+        const dayWeek = days[parsedDate.getDay()];
+        const dayOfMonth = parsedDate.getDate();
+        const month = months[parsedDate.getMonth()];
 
         deathData.push({
           x: `${dayWeek} ${dayOfMonth} ${month}`,
           y: day.y - prevDay.y,
         });
       }
-
-      prevDay = day;
     });
 
   return deathData;
