@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.paper,
     position: "relative",
     overflow: "auto",
-    maxHeight: "85vh",
+    maxHeight: "75vh",
   },
 }));
 
@@ -33,7 +33,11 @@ const ListCountries = () => {
     dispatch({
       type: "updateProperty",
       property: "countryData",
-      info: getCountryData(countryName, state.allData),
+      info: getCountryData(
+        countryName,
+        state.allData,
+        state.daysRange
+      ),
     });
   };
 
