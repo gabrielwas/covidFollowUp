@@ -126,8 +126,8 @@ export const getDeaths = (countryData) => {
         const month = months[iDate.getMonth()];
 
         deathData.push({
-          date: `${dayWeek} ${dayOfMonth} ${month}`,
-          deaths: day.y - prevDay.y,
+          x: `${dayWeek} ${dayOfMonth} ${month}`,
+          y: day.y - prevDay.y,
         });
       }
 
