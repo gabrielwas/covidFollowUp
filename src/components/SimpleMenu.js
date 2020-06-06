@@ -12,28 +12,11 @@ import { useStateValue } from "../stateClient/stateCoronaFollow";
 import ListItemText from "@material-ui/core/ListItemText";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 
-const MenuItemCharts = ({ nextStep, icon, name, handleClose }) => {
+const SimpleMenu = () => {
   const { dispatch } = useStateValue();
 
-  return (
-    <MenuItem
-      onClick={() => {
-        handleClose();
-        dispatch({
-          type: "updateProperty",
-          property: "activeStep",
-          info: nextStep,
-        });
-      }}
-    >
-      <ListItemIcon>{icon}</ListItemIcon>
-      <ListItemText primary={name} />
-    </MenuItem>
-  );
-};
-
-export default function SimpleMenu() {
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const ref = React.createRef();
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -42,6 +25,23 @@ export default function SimpleMenu() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const MenuItemCharts = React.forwardRef((props, ref) => (
+    <MenuItem
+      onClick={() => {
+        handleClose();
+        dispatch({
+          type: "updateProperty",
+          property: "activeStep",
+          info: props.nextStep,
+        });
+      }}
+      ref={ref}
+    >
+      <ListItemIcon>{props.icon}</ListItemIcon>
+      <ListItemText primary={props.name} />
+    </MenuItem>
+  ));
 
   return (
     <>
@@ -66,21 +66,23 @@ export default function SimpleMenu() {
           name="Gráfico Geral"
           nextStep={1}
           icon={<ShowChartIcon />}
-          handleClose={handleClose}
+          ref={ref}
         />
         <MenuItemCharts
           name="Mortes"
           nextStep={2}
           icon={<EqualizerIcon />}
-          handleClose={handleClose}
+          ref={ref}
         />
         <MenuItemCharts
           name="Mortes / Semana"
           nextStep={3}
           icon={<EqualizerIcon />}
-          handleClose={handleClose}
+          ref={ref}
         />
       </Menu>
     </>
   );
-}
+};
+
+export default SimpleMenu;
