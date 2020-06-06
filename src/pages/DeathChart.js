@@ -29,7 +29,7 @@ const DeathChart = ({ dailyCases }) => {
     dailyCases
       ? setDeaths(getDeaths(state.countryData, state.daysRange))
       : setDeaths(getWeekDeaths(state.countryData, state.daysRange));
-  }, [state.daysRange, state.countryData]);
+  }, [state.daysRange, state.countryData, dailyCases]);
 
   return (
     <Grid container spacing={2} alignItems="center" justify="center" style={{}}>
@@ -47,9 +47,7 @@ const DeathChart = ({ dailyCases }) => {
             <Box p={1}>
               <div style={{ height: "80vh", width: "80vw" }}>
                 <Paper className={classes.root} elevation={3}>
-                  {state.countryData && state.daysRange && (
-                    <BarVis data={deaths} />
-                  )}
+                  <BarVis data={deaths} />
                 </Paper>
               </div>
             </Box>

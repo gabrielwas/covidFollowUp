@@ -186,7 +186,9 @@ export const getWeekDeaths = (countryData, rangeDays) => {
     if (data.x.getDay() > dayOfWeek) {
       sumWeek = sumWeek + data.y;
     } else {
-      const currentDate = data.x;
+      let currentDate = new Date(data.x);
+
+      currentDate.setDate(currentDate.getDate() - 1);
 
       const dayWeek = days[currentDate.getDay()];
       const dayOfMonth = currentDate.getDate();
@@ -201,6 +203,17 @@ export const getWeekDeaths = (countryData, rangeDays) => {
     }
 
     dayOfWeek = data.x.getDay();
+  });
+
+  let currentDate = new Date();
+
+  const dayWeek = days[currentDate.getDay()];
+  const dayOfMonth = currentDate.getDate();
+  const month = months[currentDate.getMonth()];
+
+  weekDeaths.push({
+    x: `${dayWeek} ${dayOfMonth} ${month}`,
+    y: sumWeek,
   });
 
   return weekDeaths;
