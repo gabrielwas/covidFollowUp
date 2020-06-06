@@ -8,7 +8,10 @@ const PageStep = ({ step }) => {
       return <GeneralCharts />;
 
     case 2:
-      return <DeathChart />;
+      return <DeathChart dailyCases={true} />;
+
+    case 3:
+      return <DeathChart dailyCases={false} />;
 
     default:
       break;

@@ -46,6 +46,8 @@ export default function SimpleMenu() {
           />
 
           <ListItemIns name={"Mortes"} nextStep={2} icon={<EqualizerIcon />} />
+
+          <ListItemIns name={"Mortes / Semana"} nextStep={3} icon={<EqualizerIcon />} />
         </List>
       </Menu>
     </>
