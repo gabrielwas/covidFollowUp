@@ -36,7 +36,9 @@ const DeathChart = ({ dailyCases, isCountryData }) => {
     } else {
       setDeaths(getDailyDeathsByStateBR(state.stateBRData[1].data));
     }
-  }, [state.daysRange, state.countryData, dailyCases, state.stateBRData]);
+
+    console.log("here")
+  }, [state.daysRange, state.countryData, dailyCases, state.stateBRData, isCountryData]);
 
   return (
     <Grid container spacing={2} alignItems="center" justify="center" style={{}}>

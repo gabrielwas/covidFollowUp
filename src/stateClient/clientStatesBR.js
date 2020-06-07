@@ -78,7 +78,7 @@ export const loadStates = () => {
       results.forEach((element) => {
         statesBR.push({
           initials: element.state,
-          name: statesBrazil.find((st) => st.sigla == element.state).nome,
+          name: statesBrazil.find((st) => st.sigla === element.state).nome,
           estimated_population_2019: element.estimated_population_2019,
           confirmed: element.confirmed,
           confirmed_per_100k_inhabitants:

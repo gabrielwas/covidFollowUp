@@ -37,7 +37,7 @@ const GeneralCharts = ({ listCountries }) => {
               <Chip
                 label={
                   state.statesBR.find(
-                    (st) => st.initials == state.selectedStateBR
+                    (st) => st.initials === state.selectedStateBR
                   ).name
                 }
               />
