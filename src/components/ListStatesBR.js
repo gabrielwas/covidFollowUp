@@ -7,6 +7,9 @@ import ListItemText from "@material-ui/core/ListItemText";
 
 import { getDataByStateBR } from "../stateClient/clientStatesBR";
 
+import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+
 const useStyles = makeStyles((theme) => ({
   listConfig: {
     backgroundColor: theme.palette.background.paper,
@@ -42,13 +45,17 @@ const ListStatesBR = () => {
         {state.statesBR &&
           state.statesBR.map((item) => (
             <ListItem
-              key={item.sigla}
+              key={item.initials}
               button
-              onClick={() => onChangeStateBR(item.sigla)}
+              onClick={() => onChangeStateBR(item.initials)}
             >
+              <ListItemIcon>
+                <FiberManualRecordIcon style={{ color: "#2E86C1" }} />
+              </ListItemIcon>
+
               <ListItemText
-                primary={item.nome}
-                // secondary={"Casos: " + item.nome}
+                primary={item.name}
+                secondary={"Casos: " + item.confirmed.toLocaleString("pt-BR")}
               />
             </ListItem>
           ))}

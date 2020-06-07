@@ -11,11 +11,10 @@ import {
 
 import { getData, getCountries, getCountryData } from "./stateClient/client";
 
-import { getDataByStateBR } from "./stateClient/clientStatesBR";
+import { getDataByStateBR, loadStates } from "./stateClient/clientStatesBR";
 
 import UpperBar from "./basicComponents/UpperBar";
 import PageBase from "./components/PageBase";
-import { statesBrazil } from "./constants/statesBrazil";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -77,11 +76,13 @@ function App() {
       });
     });
 
-    dispatch({
-      type: "updateProperty",
-      property: "statesBR",
-      info: statesBrazil,
-    });
+    loadStates().then((statesBR) => {
+      dispatch({
+        type: "updateProperty",
+        property: "statesBR",
+        info: statesBR,
+      });
+    })
   }, []);
 
   return (

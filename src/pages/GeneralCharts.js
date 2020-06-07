@@ -23,30 +23,41 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const GeneralCharts = ({listCountries}) => {
+const GeneralCharts = ({ listCountries }) => {
   const { state } = useStateValue();
   const classes = useStyles();
 
   return (
     <Grid container spacing={2} alignItems="center" justify="center" style={{}}>
       <Grid item sm={12} md={10}>
-
-        <Grid container spacing={0} >
+        <Grid container spacing={0}>
           <Grid item sm={12} md={6} xs={12}>
             {listCountries && <Chip label={state.selectedCountry} />}
-            {!listCountries && <Chip label={state.selectedStateBR} />}
+            {!listCountries && (
+              <Chip
+                label={
+                  state.statesBR.find(
+                    (st) => st.initials == state.selectedStateBR
+                  ).name
+                }
+              />
+            )}
           </Grid>
 
           <Grid item sm={12} md={6} xs={12}>
-            {listCountries && state.daysRange && <SliderDates/>}
+            {listCountries && state.daysRange && <SliderDates />}
           </Grid>
 
           <Grid item sm={12} md={12} xs={12}>
             <Box p={1}>
               <div style={{ height: "80vh", width: "80vw" }}>
                 <Paper className={classes.root} elevation={3}>
-                  {listCountries && state.countryData && <LineVisCountries data={state.countryData} />}
-                  {!listCountries && state.stateBRData && <LineVisStatesBR data={state.stateBRData} />}
+                  {listCountries && state.countryData && (
+                    <LineVisCountries data={state.countryData} />
+                  )}
+                  {!listCountries && state.stateBRData && (
+                    <LineVisStatesBR data={state.stateBRData} />
+                  )}
                 </Paper>
               </div>
             </Box>
@@ -55,9 +66,7 @@ const GeneralCharts = ({listCountries}) => {
       </Grid>
 
       <Grid item sm={12} md={2}>
-        <Box>
-          {listCountries ? <ListCountries /> : <ListStatesBR/>}
-        </Box>
+        <Box>{listCountries ? <ListCountries /> : <ListStatesBR />}</Box>
       </Grid>
     </Grid>
   );
