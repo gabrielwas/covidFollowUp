@@ -1,4 +1,4 @@
-import { getDataByStateBR } from "./clientStatesBR";
+import {days, months} from "../constants/calendarConstants"
 
 export const getData = () => {
   return fetch("https://pomber.github.io/covid19/timeseries.json")
@@ -97,22 +97,6 @@ export const getCountryData = (countryName, data, rangeDays) => {
 
   return result;
 };
-
-var days = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sab"];
-var months = [
-  "Jan",
-  "Fev",
-  "Mar",
-  "Abr",
-  "Mai",
-  "Jun",
-  "Jul",
-  "Ago",
-  "Set",
-  "Out",
-  "Nov",
-  "Dez",
-];
 
 export const getDeaths = (countryData, rangeDays) => {
   const deathData = [];

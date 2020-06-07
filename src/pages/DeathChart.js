@@ -11,6 +11,9 @@ import BarVis from "../chartComponents/BarVis";
 
 import Box from "@material-ui/core/Box";
 import SliderDates from "../components/SliderDates";
+import ListStatesBR from "../components/ListStatesBR";
+
+import { getDailyDeathsByStateBR } from "../stateClient/clientStatesBR";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -19,17 +22,21 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const DeathChart = ({ dailyCases }) => {
+const DeathChart = ({ dailyCases, isCountryData }) => {
   const { state } = useStateValue();
   const classes = useStyles();
 
   const [deaths, setDeaths] = useState([]);
 
   useEffect(() => {
-    dailyCases
-      ? setDeaths(getDeaths(state.countryData, state.daysRange))
-      : setDeaths(getWeekDeaths(state.countryData, state.daysRange));
-  }, [state.daysRange, state.countryData, dailyCases]);
+    if (isCountryData) {
+      dailyCases
+        ? setDeaths(getDeaths(state.countryData, state.daysRange))
+        : setDeaths(getWeekDeaths(state.countryData, state.daysRange));
+    } else {
+      setDeaths(getDailyDeathsByStateBR(state.stateBRData[1].data));
+    }
+  }, [state.daysRange, state.countryData, dailyCases, state.stateBRData]);
 
   return (
     <Grid container spacing={2} alignItems="center" justify="center" style={{}}>
@@ -40,7 +47,7 @@ const DeathChart = ({ dailyCases }) => {
           </Grid>
 
           <Grid item sm={12} md={6} xs={12}>
-            {state.daysRange && <SliderDates />}
+            {state.daysRange && isCountryData && <SliderDates />}
           </Grid>
 
           <Grid item sm={12} md={12} xs={12}>
@@ -56,9 +63,7 @@ const DeathChart = ({ dailyCases }) => {
       </Grid>
 
       <Grid item sm={12} md={2}>
-        <Box>
-          <ListCountries />
-        </Box>
+        <Box>{isCountryData ? <ListCountries /> : <ListStatesBR />}</Box>
       </Grid>
     </Grid>
   );

@@ -86,6 +86,12 @@ const SimpleMenu = () => {
           icon={<EqualizerIcon />}
           ref={ref}
         />
+         <MenuItemCharts
+          name="Mortes - Estados"
+          nextStep={5}
+          icon={<EqualizerIcon />}
+          ref={ref}
+        />
       </Menu>
     </>
   );

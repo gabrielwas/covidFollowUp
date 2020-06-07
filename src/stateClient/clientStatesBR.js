@@ -1,4 +1,5 @@
 import { statesBrazil } from "../constants/statesBrazil";
+import { days, months } from "../constants/calendarConstants";
 
 export const getDataByStateBR = (stateBR) => {
   const endpoint =
@@ -39,6 +40,30 @@ export const getDataByStateBR = (stateBR) => {
 
       return result;
     });
+};
+
+export const getDailyDeathsByStateBR = (stateData) => {
+  const reversedData = stateData.reverse();
+
+  const stateBRDeaths = [];
+  let prevDay = 0;
+
+  reversedData.forEach((element, index, arr) => {
+    if (index > 0) {
+      prevDay = arr[index - 1].y;
+    }
+
+    const dayWeek = days[element.x.getDay()];
+    const dayOfMonth = element.x.getDate();
+    const month = months[element.x.getMonth()];
+
+    stateBRDeaths.push({
+      x: `${dayWeek} ${dayOfMonth} ${month}`,
+      y: element.y - prevDay,
+    });
+  });
+
+  return stateBRDeaths;
 };
 
 export const loadStates = () => {
