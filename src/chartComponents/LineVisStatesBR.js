@@ -15,41 +15,20 @@ import {
 
 const ITEMS = [
   { title: "Confirmados", color: "#3498DB", strokeWidth: 12 },
-  { title: "Casos Ativos", color: "#F1C40F", strokeWidth: 12 },
-  { title: "Recuperados", color: "#16A085", strokeWidth: 12 },
   { title: "Mortes", color: "#E74C3C", strokeWidth: 12 },
 ];
 
-const LineVis = ({ data }) => {
+const LineVisStatesBR = ({ data }) => {
   const [crosshairValues, setCrosshairValues] = useState([]);
-
-  // const titleFormating = (d) => {
-  //   console.log(d);
-
-  //   const result = {
-  //     title: "Date",
-  //     value: d[0].y,
-  //   };
-
-  //   return result;
-  // };
 
   const titleFormating = (d) => [
     {
       title: "Confirmados",
-      value: d[3].y,
-    },
-    {
-      title: "Casos Ativos",
-      value: d[2].y,
-    },
-    {
-      title: "Recuperados",
-      value: d[1].y,
+      value: d[0].y,
     },
     {
       title: "Mortes",
-      value: d[0].y,
+      value: d[1].y,
     },
   ];
 
@@ -67,31 +46,16 @@ const LineVis = ({ data }) => {
       <LineMarkSeries
         className="linemark-series-example-2"
         curve={"curveMonotoneX"}
-        data={data[3].data}
+        data={data[0].data}
         color="#3498DB"
         onNearestX={(value, { index }) =>
           setCrosshairValues(data.map((d) => d.data[index]))
         }
       />
-
-      <LineMarkSeries
-        className="linemark-series-example-2"
-        curve={"curveMonotoneX"}
-        data={data[2].data}
-        color="#F1C40F"
-      />
-
       <LineMarkSeries
         className="linemark-series-example-2"
         curve={"curveMonotoneX"}
         data={data[1].data}
-        color="#16A085"
-      />
-
-      <LineMarkSeries
-        className="linemark-series-example-2"
-        curve={"curveMonotoneX"}
-        data={data[0].data}
         color="#E74C3C"
       />
       <Crosshair values={crosshairValues} itemsFormat={titleFormating} />
@@ -99,4 +63,4 @@ const LineVis = ({ data }) => {
   );
 };
 
-export default LineVis;
+export default LineVisStatesBR;

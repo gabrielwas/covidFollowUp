@@ -6,10 +6,12 @@ import Paper from "@material-ui/core/Paper";
 import ListCountries from "../components/ListCountries";
 import Chip from "@material-ui/core/Chip";
 
-import LineVis from "../chartComponents/LineVis";
+import LineVisCountries from "../chartComponents/LineVisCountries";
+import LineVisStatesBR from "../chartComponents/LineVisStatesBR";
 
 import Box from "@material-ui/core/Box";
 import SliderDates from "../components/SliderDates";
+import ListStatesBR from "../components/ListStatesBR";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -21,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const GeneralCharts = () => {
+const GeneralCharts = ({listCountries}) => {
   const { state } = useStateValue();
   const classes = useStyles();
 
@@ -31,18 +33,20 @@ const GeneralCharts = () => {
 
         <Grid container spacing={0} >
           <Grid item sm={12} md={6} xs={12}>
-            <Chip label={state.selectedCountry} />
+            {listCountries && <Chip label={state.selectedCountry} />}
+            {!listCountries && <Chip label={state.selectedStateBR} />}
           </Grid>
 
           <Grid item sm={12} md={6} xs={12}>
-            {state.daysRange && <SliderDates/>}
+            {listCountries && state.daysRange && <SliderDates/>}
           </Grid>
 
           <Grid item sm={12} md={12} xs={12}>
             <Box p={1}>
               <div style={{ height: "80vh", width: "80vw" }}>
                 <Paper className={classes.root} elevation={3}>
-                  {state.countryData && <LineVis data={state.countryData} />}
+                  {listCountries && state.countryData && <LineVisCountries data={state.countryData} />}
+                  {!listCountries && state.stateBRData && <LineVisStatesBR data={state.stateBRData} />}
                 </Paper>
               </div>
             </Box>
@@ -52,7 +56,7 @@ const GeneralCharts = () => {
 
       <Grid item sm={12} md={2}>
         <Box>
-          <ListCountries />
+          {listCountries ? <ListCountries /> : <ListStatesBR/>}
         </Box>
       </Grid>
     </Grid>
