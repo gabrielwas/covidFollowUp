@@ -6,7 +6,7 @@ import Paper from "@material-ui/core/Paper";
 import ListCountries from "../components/ListCountries";
 import Chip from "@material-ui/core/Chip";
 
-import { getDeaths, getWeekDeaths } from "../stateClient/client";
+import { getDeaths, getWeekDeaths } from "../stateClient/clientCountries";
 import BarVis from "../chartComponents/BarVis";
 
 import Box from "@material-ui/core/Box";

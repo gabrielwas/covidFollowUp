@@ -9,7 +9,7 @@ import {
   reducer,
 } from "./stateClient/stateCoronaFollow";
 
-import { getData, getCountries, getCountryData } from "./stateClient/client";
+import { getData, getCountries, getCountryData } from "./stateClient/clientCountries";
 
 import { getDataByStateBR, loadStates } from "./stateClient/clientStatesBR";
 

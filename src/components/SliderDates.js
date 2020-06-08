@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { useStateValue } from "../stateClient/stateCoronaFollow";
 import Slider from "@material-ui/core/Slider";
 
-import { getCountryData } from "../stateClient/client";
+import { getCountryData } from "../stateClient/clientCountries";
 
 const useStyles = makeStyles({
   root: {
