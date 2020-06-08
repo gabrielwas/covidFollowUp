@@ -42,10 +42,12 @@ const SliderDates = () => {
       info: newValue,
     });
 
-    dispatch({
-      type: "updateProperty",
-      property: "countryData",
-      info: getCountryData(state.selectedCountry, state.allData, newValue),
+    getCountryData(state.selectedCountry, newValue).then((countryData) => {
+      dispatch({
+        type: "updateProperty",
+        property: "countryData",
+        info: countryData,
+      });
     });
   };
 

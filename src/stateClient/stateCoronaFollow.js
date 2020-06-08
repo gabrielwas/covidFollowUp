@@ -5,7 +5,6 @@ export const useStateValue = () => useContext(StateContext);
 
 export const initialState = {
   countryData: undefined,
-  allData: undefined,
   countries: undefined,
   selectedCountry: "Brazil",
   daysRange: undefined,

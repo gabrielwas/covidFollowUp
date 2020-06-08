@@ -9,7 +9,7 @@ import {
   reducer,
 } from "./stateClient/stateCoronaFollow";
 
-import { getData, getCountries, getCountryData } from "./stateClient/clientCountries";
+import { getCountries, getCountryData } from "./stateClient/clientCountries";
 
 import { getDataByStateBR, loadStates } from "./stateClient/clientStatesBR";
 
@@ -46,19 +46,13 @@ function App() {
       info: [0, daysBetween],
     });
 
-    getData().then((allData) => {
-      dispatch({
-        type: "updateProperty",
-        property: "allData",
-        info: allData,
-      });
-
+    getCountryData("Brazil", [0, daysBetween]).then((countryData) => {
       dispatch({
         type: "updateProperty",
         property: "countryData",
-        info: getCountryData("Brazil", allData, [0, daysBetween]),
+        info: countryData,
       });
-    });
+    })
 
     getCountries().then((countries) => {
       dispatch({

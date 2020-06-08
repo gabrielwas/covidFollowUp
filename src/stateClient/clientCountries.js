@@ -1,12 +1,4 @@
-import {days, months} from "../constants/calendarConstants"
-
-export const getData = () => {
-  return fetch("https://pomber.github.io/covid19/timeseries.json")
-    .then((response) => response.json())
-    .then((data) => {
-      return data;
-    });
-};
+import { days, months } from "../constants/calendarConstants";
 
 export const getCountries = () => {
   return fetch("https://pomber.github.io/covid19/timeseries.json")
@@ -35,7 +27,7 @@ export const getCountries = () => {
     });
 };
 
-export const getCountryData = (countryName, data, rangeDays) => {
+export const getCountryData = (countryName, rangeDays) => {
   const result = [
     {
       id: "Mortes",
@@ -61,41 +53,46 @@ export const getCountryData = (countryName, data, rangeDays) => {
   startDate.setDate(startDate.getDate() + rangeDays[0]);
   endDate.setDate(endDate.getDate() + rangeDays[1]);
 
-  data[countryName].forEach(({ date, confirmed, recovered, deaths }) => {
-    let parsedDate = new Date(date);
+  return fetch("https://pomber.github.io/covid19/timeseries.json")
+    .then((response) => response.json())
+    .then((data) => {
 
-    if (parsedDate > startDate && parsedDate < endDate) {
-      result
-        .find(({ id }) => id === "Confirmados")
-        .data.push({
-          x: parsedDate,
-          y: confirmed,
-        });
+      data[countryName].forEach(({ date, confirmed, recovered, deaths }) => {
+        let parsedDate = new Date(date);
 
-      result
-        .find(({ id }) => id === "Recuperados")
-        .data.push({
-          x: parsedDate,
-          y: recovered,
-        });
+        if (parsedDate > startDate && parsedDate < endDate) {
+          result
+            .find(({ id }) => id === "Confirmados")
+            .data.push({
+              x: parsedDate,
+              y: confirmed,
+            });
 
-      result
-        .find(({ id }) => id === "Mortes")
-        .data.push({
-          x: parsedDate,
-          y: deaths,
-        });
+          result
+            .find(({ id }) => id === "Recuperados")
+            .data.push({
+              x: parsedDate,
+              y: recovered,
+            });
 
-      result
-        .find(({ id }) => id === "Casos Ativos")
-        .data.push({
-          x: parsedDate,
-          y: confirmed - recovered,
-        });
-    }
-  });
+          result
+            .find(({ id }) => id === "Mortes")
+            .data.push({
+              x: parsedDate,
+              y: deaths,
+            });
 
-  return result;
+          result
+            .find(({ id }) => id === "Casos Ativos")
+            .data.push({
+              x: parsedDate,
+              y: confirmed - recovered,
+            });
+        }
+      });
+
+      return result;
+    });
 };
 
 export const getDeaths = (countryData, rangeDays) => {

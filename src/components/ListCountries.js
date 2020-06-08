@@ -30,14 +30,12 @@ const ListCountries = () => {
       info: countryName,
     });
 
-    dispatch({
-      type: "updateProperty",
-      property: "countryData",
-      info: getCountryData(
-        countryName,
-        state.allData,
-        state.daysRange
-      ),
+    getCountryData(countryName, state.daysRange).then((countryData) => {
+      dispatch({
+        type: "updateProperty",
+        property: "countryData",
+        info: countryData,
+      });
     });
   };
 
