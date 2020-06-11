@@ -29,17 +29,6 @@ const StyledMenu = withStyles({
   />
 ));
 
-const StyledMenuItem = withStyles((theme) => ({
-  root: {
-    "&:focus": {
-      backgroundColor: theme.palette.primary.main,
-      "& .MuiListItemIcon-root, & .MuiListItemText-primary": {
-        color: theme.palette.common.white,
-      },
-    },
-  },
-}))(MenuItem);
-
 const SimpleMenu = ({ name, items }) => {
   const { dispatch } = useStateValue();
 
@@ -73,7 +62,7 @@ const SimpleMenu = ({ name, items }) => {
         onClose={handleClose}
       >
         {items.map((item) => (
-          <StyledMenuItem
+          <MenuItem
             key={item.nextStep}
             onClick={() => {
               handleClose();
@@ -86,7 +75,7 @@ const SimpleMenu = ({ name, items }) => {
           >
             <ListItemIcon>{item.icon}</ListItemIcon>
             <ListItemText primary={item.name} />
-          </StyledMenuItem>
+          </MenuItem>
         ))}
       </StyledMenu>
     </>
