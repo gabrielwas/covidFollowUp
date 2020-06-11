@@ -12,6 +12,7 @@ import LineVisStatesBR from "../chartComponents/LineVisStatesBR";
 import Box from "@material-ui/core/Box";
 import SliderDates from "../components/SliderDates";
 import ListStatesBR from "../components/ListStatesBR";
+import ButtonsDates from '../components/ButtonsDates';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -45,7 +46,7 @@ const GeneralCharts = ({ listCountries }) => {
           </Grid>
 
           <Grid item sm={12} md={6} xs={12}>
-            {listCountries && state.daysRange && <SliderDates />}
+            {listCountries && state.daysRange && <ButtonsDates />}
           </Grid>
 
           <Grid item sm={12} md={12} xs={12}>

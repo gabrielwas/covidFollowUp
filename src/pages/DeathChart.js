@@ -14,6 +14,7 @@ import SliderDates from "../components/SliderDates";
 import ListStatesBR from "../components/ListStatesBR";
 
 import { getDailyDeathsByStateBR } from "../stateClient/clientStatesBR";
+import ButtonsDates from '../components/ButtonsDates';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -49,7 +50,7 @@ const DeathChart = ({ dailyCases, isCountryData }) => {
           </Grid>
 
           <Grid item sm={12} md={6} xs={12}>
-            {state.daysRange && isCountryData && <SliderDates />}
+            {state.daysRange && isCountryData && <ButtonsDates />}
           </Grid>
 
           <Grid item sm={12} md={12} xs={12}>
