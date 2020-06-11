@@ -10,9 +10,8 @@ import LineVisCountries from "../chartComponents/LineVisCountries";
 import LineVisStatesBR from "../chartComponents/LineVisStatesBR";
 
 import Box from "@material-ui/core/Box";
-import SliderDates from "../components/SliderDates";
 import ListStatesBR from "../components/ListStatesBR";
-import ButtonsDates from '../components/ButtonsDates';
+import ButtonsDates from "../components/ButtonsDates";
 
 const useStyles = makeStyles((theme) => ({
   root: {

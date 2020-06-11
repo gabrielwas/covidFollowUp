@@ -3,16 +3,26 @@ import "./App.css";
 
 import { makeStyles } from "@material-ui/core/styles";
 
+import Typography from "@material-ui/core/Typography";
+import AppBar from "@material-ui/core/AppBar";
+
+import { FcLike } from "react-icons/fc";
+
 import {
   StateContext,
   initialState,
   reducer,
 } from "./stateClient/stateCoronaFollow";
 
-import { getData, getCountries, getCountryData } from "./stateClient/clientCountries";
+import {
+  getData,
+  getCountries,
+  getCountryData,
+} from "./stateClient/clientCountries";
 
 import { getDataByStateBR, loadStates } from "./stateClient/clientStatesBR";
 
+import Grid from "@material-ui/core/Grid";
 import UpperBar from "./basicComponents/UpperBar";
 import PageBase from "./components/PageBase";
 
@@ -22,7 +32,15 @@ const useStyles = makeStyles((theme) => ({
   },
   content: {
     flexGrow: 1,
-    padding: theme.spacing(3),
+    padding: theme.spacing(1),
+  },
+  appBar: {
+    height: "8%",
+    top: "auto",
+    bottom: 0,
+  },
+  grid: {
+    height: "100%",
   },
   toolbar: theme.mixins.toolbar,
 }));
@@ -82,7 +100,7 @@ function App() {
         property: "statesBR",
         info: statesBR,
       });
-    })
+    });
   }, []);
 
   return (
@@ -90,10 +108,29 @@ function App() {
       <StateContext.Provider value={{ state, dispatch }}>
         <UpperBar name="Covid Follow-up" />
 
-        <main className={classes.content}>
+        <main>
           <div className={classes.toolbar} />
 
-          <PageBase step={state.activeStep} />
+          <div className={classes.content}>
+            <PageBase step={state.activeStep} />
+          </div>
+
+          <AppBar position="static" color="primary" className={classes.appBar}>
+            <Grid
+              container
+              direction="column"
+              justify="center"
+              alignItems="center"
+              className={classes.grid}
+            >
+              <Grid item>
+                <Typography>Made by Gabriel Albuquerque</Typography>
+              </Grid>
+              <Grid item>
+                <Typography>Stay Strong! {<FcLike />}</Typography>
+              </Grid>
+            </Grid>
+          </AppBar>
         </main>
       </StateContext.Provider>
     </div>
