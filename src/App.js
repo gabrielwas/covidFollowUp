@@ -109,9 +109,8 @@ function App() {
         <UpperBar name="Covid Follow-up" />
 
         <main>
-          <div className={classes.toolbar} />
-
           <div className={classes.content}>
+            <div className={classes.toolbar} />
             <PageBase step={state.activeStep} />
           </div>
 

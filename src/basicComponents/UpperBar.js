@@ -61,7 +61,7 @@ const UpperBar = ({ name }) => {
         <Toolbar>
           <Grid justify="space-between" alignItems="center" container>
             <Grid item>
-              <Grid alignItems="center" spacing={2} container>
+              <Grid direction="row" alignItems="center" spacing={2} container>
                 <Grid item>
                   <SimpleMenu
                     name="Mundo"
