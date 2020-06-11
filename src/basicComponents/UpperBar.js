@@ -11,6 +11,9 @@ import SimpleMenu from "../components/SimpleMenu";
 import ShowChartIcon from "@material-ui/icons/ShowChart";
 import EqualizerIcon from "@material-ui/icons/Equalizer";
 
+import PublicIcon from "@material-ui/icons/Public";
+import FlagIcon from "@material-ui/icons/Flag";
+
 const useStyles = makeStyles((theme) => ({
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
@@ -60,10 +63,18 @@ const UpperBar = ({ name }) => {
             <Grid item>
               <Grid alignItems="center" spacing={2} container>
                 <Grid item>
-                  <SimpleMenu name="Mundo" items={menuItemsWorld} />
+                  <SimpleMenu
+                    name="Mundo"
+                    items={menuItemsWorld}
+                    icon={<PublicIcon />}
+                  />
                 </Grid>
                 <Grid item>
-                  <SimpleMenu name="Brasil" items={menuItemsBrazil} />
+                  <SimpleMenu
+                    name="Brasil"
+                    items={menuItemsBrazil}
+                    icon={<FlagIcon />}
+                  />
                 </Grid>
               </Grid>
             </Grid>

@@ -29,7 +29,7 @@ const StyledMenu = withStyles({
   />
 ));
 
-const SimpleMenu = ({ name, items }) => {
+const SimpleMenu = ({ name, items, icon }) => {
   const { dispatch } = useStateValue();
 
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -49,6 +49,7 @@ const SimpleMenu = ({ name, items }) => {
         aria-haspopup="true"
         variant="contained"
         color="secondary"
+        endIcon={icon}
         onClick={handleClick}
       >
         {name}
