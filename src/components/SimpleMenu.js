@@ -44,7 +44,6 @@ const SimpleMenu = ({ name, items }) => {
   const { dispatch } = useStateValue();
 
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const ref = React.createRef();
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -53,23 +52,6 @@ const SimpleMenu = ({ name, items }) => {
   const handleClose = () => {
     setAnchorEl(null);
   };
-
-  const MenuItemCharts = React.forwardRef((props, ref) => (
-    <StyledMenuItem
-      onClick={() => {
-        handleClose();
-        dispatch({
-          type: "updateProperty",
-          property: "activeStep",
-          info: props.nextStep,
-        });
-      }}
-      ref={ref}
-    >
-      <ListItemIcon>{props.icon}</ListItemIcon>
-      <ListItemText primary={props.name} />
-    </StyledMenuItem>
-  ));
 
   return (
     <>
@@ -91,12 +73,20 @@ const SimpleMenu = ({ name, items }) => {
         onClose={handleClose}
       >
         {items.map((item) => (
-          <MenuItemCharts
-            name={item.name}
-            nextStep={item.nextStep}
-            icon={item.icon}
-            ref={ref}
-          />
+          <StyledMenuItem
+            key={item.nextStep}
+            onClick={() => {
+              handleClose();
+              dispatch({
+                type: "updateProperty",
+                property: "activeStep",
+                info: item.nextStep,
+              });
+            }}
+          >
+            <ListItemIcon>{item.icon}</ListItemIcon>
+            <ListItemText primary={item.name} />
+          </StyledMenuItem>
         ))}
       </StyledMenu>
     </>
