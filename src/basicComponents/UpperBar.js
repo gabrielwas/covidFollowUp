@@ -64,14 +64,14 @@ const UpperBar = ({ name }) => {
               <Grid direction="row" alignItems="center" spacing={2} container>
                 <Grid item>
                   <SimpleMenu
-                    name="Mundo"
+                    name=""
                     items={menuItemsWorld}
                     icon={<PublicIcon />}
                   />
                 </Grid>
                 <Grid item>
                   <SimpleMenu
-                    name="Brasil"
+                    name=""
                     items={menuItemsBrazil}
                     icon={<FlagIcon />}
                   />

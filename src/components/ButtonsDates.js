@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { useStateValue } from "../stateClient/stateCoronaFollow";
 
@@ -19,7 +19,10 @@ const ButtonsDates = () => {
 
   const { state, dispatch } = useStateValue();
 
+  const [rangeSelected, setRangeSelected] = useState(-1);
+
   const onClick = (range) => {
+
     const newRange =
       range !== -1
         ? [state.daysRange[1] - range, state.daysRange[1]]
@@ -36,6 +39,9 @@ const ButtonsDates = () => {
       property: "countryData",
       info: getCountryData(state.selectedCountry, state.allData, newRange),
     });
+
+    setRangeSelected(range);
+
   };
 
   const rangeOptions = [
@@ -45,21 +51,27 @@ const ButtonsDates = () => {
     },
     {
       name: "15 Dias",
-      range: 15,
+      range: 16,
     },
     {
       name: "30 Dias",
-      range: 30,
+      range: 31,
     },
     {
       name: "60 Dias",
-      range: 60,
+      range: 61,
     },
     {
       name: "Tudo",
       range: -1,
     },
   ];
+
+  const disableOption = (range) => {
+
+    return rangeSelected === range;
+
+  }
 
   return (
     <Grid container justify="flex-end" spacing={2}>
@@ -69,6 +81,7 @@ const ButtonsDates = () => {
             size="small"
             variant="extended"
             onClick={() => onClick(item.range)}
+            disabled={disableOption(item.range)}
           >
             <ScheduleIcon className={classes.extendedIcon} /> {item.name}
           </Fab>

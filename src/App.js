@@ -42,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
   grid: {
     height: "100%",
   },
-  toolbar: theme.mixins.toolbar,
+  appBarSpace: theme.mixins.toolbar,
 }));
 
 function App() {
@@ -110,7 +110,7 @@ function App() {
 
         <main>
           <div className={classes.content}>
-            <div className={classes.toolbar} />
+            <div className={classes.appBarSpace} />
             <PageBase step={state.activeStep} />
           </div>
 
