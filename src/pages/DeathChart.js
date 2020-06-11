@@ -14,7 +14,7 @@ import SliderDates from "../components/SliderDates";
 import ListStatesBR from "../components/ListStatesBR";
 
 import { getDailyDeathsByStateBR } from "../stateClient/clientStatesBR";
-import ButtonsDates from '../components/ButtonsDates';
+import ButtonsDates from "../components/ButtonsDates";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -38,15 +38,31 @@ const DeathChart = ({ dailyCases, isCountryData }) => {
       setDeaths(getDailyDeathsByStateBR(state.stateBRData[1].data));
     }
 
-    console.log("here")
-  }, [state.daysRange, state.countryData, dailyCases, state.stateBRData, isCountryData]);
+    console.log("here");
+  }, [
+    state.daysRange,
+    state.countryData,
+    dailyCases,
+    state.stateBRData,
+    isCountryData,
+  ]);
 
   return (
     <Grid container spacing={2} alignItems="center" justify="center" style={{}}>
       <Grid item sm={12} md={10}>
         <Grid container spacing={0} className={classes.root}>
           <Grid item sm={12} md={6} xs={12}>
-            <Chip label={state.selectedCountry} />
+            {isCountryData ? (
+              <Chip label={state.selectedCountry} />
+            ) : (
+              <Chip
+                label={
+                  state.statesBR.find(
+                    (st) => st.initials === state.selectedStateBR
+                  ).name
+                }
+              />
+            )}
           </Grid>
 
           <Grid item sm={12} md={6} xs={12}>
