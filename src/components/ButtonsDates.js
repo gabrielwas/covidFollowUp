@@ -7,6 +7,7 @@ import ScheduleIcon from "@material-ui/icons/Schedule";
 import Grid from "@material-ui/core/Grid";
 
 import { getCountryData } from "../stateClient/clientCountries";
+import { getDataByStateBR } from "../stateClient/clientStatesBR";
 
 const useStyles = makeStyles((theme) => ({
   extendedIcon: {
@@ -38,6 +39,14 @@ const ButtonsDates = () => {
       type: "updateProperty",
       property: "countryData",
       info: getCountryData(state.selectedCountry, state.allData, newRange),
+    });
+
+    getDataByStateBR(state.selectedStateBR, newRange).then((result) => {
+      dispatch({
+        type: "updateProperty",
+        property: "stateBRData",
+        info: result,
+      });
     });
 
     setRangeSelected(range);

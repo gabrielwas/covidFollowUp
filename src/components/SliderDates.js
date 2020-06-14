@@ -12,7 +12,7 @@ const useStyles = makeStyles({
 });
 
 let currentDate = new Date();
-let firstDate = new Date("2020-03-03");
+let firstDate = new Date("2020-03-12");
 
 const daysBetween = Math.floor(
   (currentDate.getTime() - firstDate.getTime()) / (1000 * 3600 * 24)

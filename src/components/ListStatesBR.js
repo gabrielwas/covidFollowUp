@@ -30,7 +30,7 @@ const ListStatesBR = () => {
       info: stateInitials,
     });
 
-    getDataByStateBR(stateInitials).then((result) => {
+    getDataByStateBR(stateInitials, state.daysRange).then((result) => {
       dispatch({
         type: "updateProperty",
         property: "stateBRData",

@@ -10,7 +10,6 @@ import { getDeaths, getWeekDeaths } from "../stateClient/clientCountries";
 import BarVis from "../chartComponents/BarVis";
 
 import Box from "@material-ui/core/Box";
-import SliderDates from "../components/SliderDates";
 import ListStatesBR from "../components/ListStatesBR";
 
 import { getDailyDeathsByStateBR } from "../stateClient/clientStatesBR";
@@ -37,8 +36,6 @@ const DeathChart = ({ dailyCases, isCountryData }) => {
     } else {
       setDeaths(getDailyDeathsByStateBR(state.stateBRData[1].data));
     }
-
-    console.log("here");
   }, [
     state.daysRange,
     state.countryData,
@@ -66,7 +63,7 @@ const DeathChart = ({ dailyCases, isCountryData }) => {
           </Grid>
 
           <Grid item sm={12} md={6} xs={12}>
-            {state.daysRange && isCountryData && <ButtonsDates />}
+            {state.daysRange && <ButtonsDates />}
           </Grid>
 
           <Grid item sm={12} md={12} xs={12}>

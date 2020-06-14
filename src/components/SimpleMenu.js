@@ -1,9 +1,7 @@
 import React from "react";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
-import Button from "@material-ui/core/Button";
 import { withStyles } from "@material-ui/core/styles";
-import IconButton from '@material-ui/core/IconButton';
 import Fab from '@material-ui/core/Fab';
 
 import { useStateValue } from "../stateClient/stateCoronaFollow";

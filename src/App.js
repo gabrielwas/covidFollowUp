@@ -52,7 +52,7 @@ function App() {
 
   useEffect(() => {
     let currentDate = new Date();
-    let firstDate = new Date("2020-03-03");
+    let firstDate = new Date("2020-03-12");
 
     const daysBetween = Math.floor(
       (currentDate.getTime() - firstDate.getTime()) / (1000 * 3600 * 24)
@@ -86,7 +86,7 @@ function App() {
       });
     });
 
-    getDataByStateBR("PE").then((result) => {
+    getDataByStateBR("PE", [0, daysBetween]).then((result) => {
       dispatch({
         type: "updateProperty",
         property: "stateBRData",

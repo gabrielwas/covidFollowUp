@@ -55,8 +55,8 @@ export const getCountryData = (countryName, data, rangeDays) => {
     },
   ];
 
-  let startDate = new Date("2020-03-03");
-  let endDate = new Date("2020-03-03");
+  let startDate = new Date("2020-03-12");
+  let endDate = new Date("2020-03-12");
 
   startDate.setDate(startDate.getDate() + rangeDays[0]);
   endDate.setDate(endDate.getDate() + rangeDays[1]);
@@ -105,8 +105,8 @@ export const getDeaths = (countryData, rangeDays) => {
     y: 0,
   };
 
-  let startDate = new Date("2020-03-03");
-  let endDate = new Date("2020-03-03");
+  let startDate = new Date("2020-03-12");
+  let endDate = new Date("2020-03-12");
 
   startDate.setDate(startDate.getDate() + rangeDays[0] + 1);
   endDate.setDate(endDate.getDate() + rangeDays[1]);
@@ -139,8 +139,8 @@ export const getWeekDeaths = (countryData, rangeDays) => {
     y: 0,
   };
 
-  let startDate = new Date("2020-03-03");
-  let endDate = new Date("2020-03-03");
+  let startDate = new Date("2020-03-12");
+  let endDate = new Date("2020-03-12");
 
   startDate.setDate(startDate.getDate() + rangeDays[0] + 1);
   endDate.setDate(endDate.getDate() + rangeDays[1]);
