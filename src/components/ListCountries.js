@@ -49,6 +49,7 @@ const ListCountries = () => {
             <ListItem
               key={item.name}
               button
+              selected={state.selectedCountry === item.name}
               onClick={() => onChangeCountry(item.name)}
             >
               {item.progression ? (

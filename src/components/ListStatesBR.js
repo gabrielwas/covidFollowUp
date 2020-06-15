@@ -47,6 +47,7 @@ const ListStatesBR = () => {
             <ListItem
               key={item.initials}
               button
+              selected={state.selectedStateBR === item.initials}
               onClick={() => onChangeStateBR(item.initials)}
             >
               <ListItemIcon>
