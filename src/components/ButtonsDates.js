@@ -41,10 +41,18 @@ const ButtonsDates = () => {
       info: getCountryData(state.selectedCountry, state.allData, newRange),
     });
 
-    getDataByStateBR(state.selectedStateBR, newRange).then((result) => {
+    getDataByStateBR(state.selectedStateBR, newRange, true).then((result) => {
       dispatch({
         type: "updateProperty",
         property: "stateBRData",
+        info: result,
+      });
+    });
+
+    getDataByStateBR(state.selectedCityBR, newRange, false).then((result) => {
+      dispatch({
+        type: "updateProperty",
+        property: "cityBRData",
         info: result,
       });
     });

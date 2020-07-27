@@ -14,6 +14,7 @@ import ListStatesBR from "../components/ListStatesBR";
 
 import { getDailyDeathsByStateBR } from "../stateClient/clientStatesBR";
 import ButtonsDates from "../components/ButtonsDates";
+import InsertCity from '../components/InsertCity';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -22,26 +23,54 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const DeathChart = ({ dailyCases, isCountryData }) => {
+const DeathChart = ({ dailyCases, dataType }) => {
   const { state } = useStateValue();
   const classes = useStyles();
 
   const [deaths, setDeaths] = useState([]);
 
+  const [placeLabel, setPlaceLabel] = useState("");
+
   useEffect(() => {
-    if (isCountryData) {
-      dailyCases
-        ? setDeaths(getDeaths(state.countryData, state.daysRange))
-        : setDeaths(getWeekDeaths(state.countryData, state.daysRange));
-    } else {
-      setDeaths(getDailyDeathsByStateBR(state.stateBRData[1].data));
+    switch (dataType) {
+      case "country":
+        dailyCases
+          ? setDeaths(getDeaths(state.countryData, state.daysRange))
+          : setDeaths(getWeekDeaths(state.countryData, state.daysRange));
+
+        setPlaceLabel(state.selectedCountry);
+
+        break;
+      case "state":
+        setDeaths(getDailyDeathsByStateBR(state.stateBRData[1].data));
+
+        setPlaceLabel(
+          state.statesBR.find((st) => st.initials === state.selectedStateBR)
+            .name
+        );
+
+        break;
+
+      case "city":
+        setDeaths(getDailyDeathsByStateBR(state.cityBRData[1].data));
+
+        setPlaceLabel(state.selectedCityBR);
+
+        break;
+
+      default:
+        break;
     }
   }, [
     state.daysRange,
     state.countryData,
     dailyCases,
     state.stateBRData,
-    isCountryData,
+    state.cityBRData,
+    state.selectedCountry,
+    state.selectedStateBR,
+    state.selectedCityBR,
+    dataType,
   ]);
 
   return (
@@ -49,17 +78,7 @@ const DeathChart = ({ dailyCases, isCountryData }) => {
       <Grid item sm={12} md={10}>
         <Grid container spacing={0} className={classes.root}>
           <Grid item sm={12} md={6} xs={12}>
-            {isCountryData ? (
-              <Chip label={state.selectedCountry} />
-            ) : (
-              <Chip
-                label={
-                  state.statesBR.find(
-                    (st) => st.initials === state.selectedStateBR
-                  ).name
-                }
-              />
-            )}
+            <Chip label={placeLabel} />
           </Grid>
 
           <Grid item sm={12} md={6} xs={12}>
@@ -79,7 +98,11 @@ const DeathChart = ({ dailyCases, isCountryData }) => {
       </Grid>
 
       <Grid item sm={12} md={2}>
-        <Box>{isCountryData ? <ListCountries /> : <ListStatesBR />}</Box>
+        <Box>
+          {dataType === "country" && <ListCountries />}
+          {dataType === "state" && <ListStatesBR />}
+          {dataType === "city" && <InsertCity />}
+        </Box>
       </Grid>
     </Grid>
   );

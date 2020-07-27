@@ -86,7 +86,7 @@ function App() {
       });
     });
 
-    getDataByStateBR("PE", [0, daysBetween]).then((result) => {
+    getDataByStateBR("PE", [0, daysBetween], true).then((result) => {
       dispatch({
         type: "updateProperty",
         property: "stateBRData",
@@ -99,6 +99,14 @@ function App() {
         type: "updateProperty",
         property: "statesBR",
         info: statesBR,
+      });
+    });
+
+    getDataByStateBR("Recife", [0, daysBetween], false).then((result) => {
+      dispatch({
+        type: "updateProperty",
+        property: "cityBRData",
+        info: result,
       });
     });
   }, []);

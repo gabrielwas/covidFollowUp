@@ -1,10 +1,17 @@
 import { statesBrazil } from "../constants/statesBrazil";
 import { days, months } from "../constants/calendarConstants";
 
-export const getDataByStateBR = (stateBR, rangeDays) => {
-  const endpoint =
-    "https://brasil.io/api/dataset/covid19/caso/data?place_type=state&state=" +
-    stateBR;
+export const getDataByStateBR = (placeBR, rangeDays, isState) => {
+  let endpoint = "";
+
+  if (isState) {
+    endpoint =
+      "https://brasil.io/api/dataset/covid19/caso/data?place_type=state&state=" +
+      placeBR;
+  } else {
+    endpoint =
+      "https://brasil.io/api/dataset/covid19/caso/data?city=" + placeBR;
+  }
 
   const result = [
     {
@@ -64,7 +71,7 @@ export const getDailyDeathsByStateBR = (stateData) => {
 
       stateBRDeaths.push({
         x: `${dayWeek} ${dayOfMonth} ${month}`,
-        y: element.y - prevDay,
+        y: element.y - prevDay >= 0 ? element.y - prevDay : 0,
       });
     }
 

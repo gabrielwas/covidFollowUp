@@ -12,7 +12,10 @@ export const initialState = {
   activeStep: 1,
   selectedStateBR: "PE",
   statesBR: undefined,
-  stateBRData: undefined
+  stateBRData: undefined,
+
+  selectedCityBR: "Recife",
+  cityBRData: undefined,
 };
 
 export const reducer = (state, action) => {

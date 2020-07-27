@@ -8,16 +8,19 @@ const PageStep = ({ step }) => {
       return <GeneralCharts listCountries={true} />;
 
     case 2:
-      return <DeathChart dailyCases={true} isCountryData={true}/>;
+      return <DeathChart dailyCases={true} dataType='country'/>;
 
     case 3:
-      return <DeathChart dailyCases={false} isCountryData={true}/>;
+      return <DeathChart dailyCases={false} dataType='country'/>;
 
     case 4:
       return <GeneralCharts listCountries={false} />;
 
     case 5:
-      return <DeathChart isCountryData={false}/>;
+      return <DeathChart dataType='state'/>;
+
+    case 6:
+      return <DeathChart dataType='city'/>;
 
     default:
       break;

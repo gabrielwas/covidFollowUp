@@ -52,6 +52,11 @@ const UpperBar = ({ name }) => {
       nextStep: 5,
       icon: <EqualizerIcon />,
     },
+    {
+      name: "Mortes / Cidade",
+      nextStep: 6,
+      icon: <EqualizerIcon />,
+    },
   ];
 
   return (
